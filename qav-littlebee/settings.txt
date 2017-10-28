@@ -1,5 +1,5 @@
 dump
-# Betaflight / SPRACINGF3 (SRF3) 3.2.0 Aug 28 2017 / 12:08:46 (b2cd7294e)
+# Betaflight / SPRACINGF3 (SRF3) 3.2.1 Oct 15 2017 / 19:48:10 (434db9a36) MSP API: 1.36
 name -
 resource BEEPER 1 C15
 resource MOTOR 1 A12
@@ -120,6 +120,7 @@ feature -ANTI_GRAVITY
 feature -DYNAMIC_FILTER
 feature RX_SERIAL
 feature RSSI_ADC
+feature ANTI_GRAVITY
 feature DYNAMIC_FILTER
 beeper GYRO_CALIBRATED
 beeper RX_LOST
@@ -351,12 +352,12 @@ set max_aux_channels = 14
 set serialrx_provider = IBUS
 set sbus_inversion = ON
 set spektrum_sat_bind = 0
-set spektrum_sat_bind_autoreset = 1
+set spektrum_sat_bind_autoreset = ON
 set airmode_start_throttle = 1350
 set rx_min_usec = 885
 set rx_max_usec = 2115
 set input_filtering_mode = OFF
-set blackbox_p_denom = 32
+set blackbox_p_ratio = 32
 set blackbox_device = SPIFLASH
 set blackbox_on_motor_test = OFF
 set blackbox_record_acc = ON
@@ -401,7 +402,7 @@ set ibatv_offset = 0
 set beeper_inversion = ON
 set beeper_od = OFF
 set beeper_frequency = 0
-set beeper_dshot = ON
+set beeper_dshot_beacon_tone = 0
 set yaw_motors_reversed = OFF
 set 3d_deadband_low = 1406
 set 3d_deadband_high = 1514
@@ -502,6 +503,7 @@ set osd_stat_tim_2 = ON
 set task_statistics = ON
 set debug_mode = NONE
 set pwr_on_arm_grace = 0
+set vtx_halfduplex = ON
 set displayport_msp_col_adjust = 0
 set displayport_msp_row_adjust = 0
 set esc_sensor_halfduplex = OFF
@@ -511,6 +513,7 @@ set dashboard_i2c_addr = 60
 set camera_control_mode = HARDWARE_PWM
 set camera_control_ref_voltage = 330
 set camera_control_key_delay = 180
+set camera_control_internal_resistance = 470
 profile 1
 
 set dterm_lowpass_type = BIQUAD
@@ -557,7 +560,6 @@ set d_level = 75
 set p_vel = 55
 set i_vel = 55
 set d_vel = 75
-set level_sensitivity = 55
 set level_limit = 55
 set horizon_tilt_effect = 75
 set horizon_tilt_expert_mode = OFF
