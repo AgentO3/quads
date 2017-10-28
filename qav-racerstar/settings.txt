@@ -1,5 +1,5 @@
 dump
-# Betaflight / SPRACINGF3 (SRF3) 3.2.0 Aug  6 2017 / 13:37:51 (981df1d54)
+# Betaflight / SPRACINGF3 (SRF3) 3.2.1 Oct 15 2017 / 19:48:10 (434db9a36) MSP API: 1.36
 name -
 resource BEEPER 1 C15
 resource MOTOR 1 A06
@@ -352,12 +352,12 @@ set max_aux_channels = 14
 set serialrx_provider = IBUS
 set sbus_inversion = ON
 set spektrum_sat_bind = 0
-set spektrum_sat_bind_autoreset = 1
+set spektrum_sat_bind_autoreset = ON
 set airmode_start_throttle = 1350
 set rx_min_usec = 885
 set rx_max_usec = 2115
 set input_filtering_mode = OFF
-set blackbox_p_denom = 32
+set blackbox_p_ratio = 32
 set blackbox_device = SPIFLASH
 set blackbox_on_motor_test = OFF
 set blackbox_record_acc = ON
@@ -383,6 +383,7 @@ set align_board_yaw = -90
 set gimbal_mode = NORMAL
 set bat_capacity = 0
 set vbat_max_cell_voltage = 43
+set vbat_full_cell_voltage = 41
 set vbat_min_cell_voltage = 33
 set vbat_warning_cell_voltage = 35
 set vbat_hysteresis = 1
@@ -392,6 +393,7 @@ set vbat_detect_cell_voltage = 30
 set use_vbat_alerts = ON
 set use_cbat_alerts = OFF
 set cbat_alert_percent = 10
+set vbat_cutoff_percent = 100
 set vbat_scale = 115
 set ibata_scale = 400
 set ibata_offset = 0
@@ -400,6 +402,7 @@ set ibatv_offset = 0
 set beeper_inversion = ON
 set beeper_od = OFF
 set beeper_frequency = 0
+set beeper_dshot_beacon_tone = 0
 set yaw_motors_reversed = OFF
 set 3d_deadband_low = 1406
 set 3d_deadband_high = 1514
@@ -444,6 +447,8 @@ set osd_units = METRIC
 set osd_rssi_alarm = 20
 set osd_cap_alarm = 2200
 set osd_alt_alarm = 100
+set osd_ah_max_pit = 20
+set osd_ah_max_rol = 40
 set osd_tim1 = 2560
 set osd_tim2 = 2561
 set osd_vbat_pos = 2092
@@ -497,6 +502,8 @@ set osd_stat_tim_1 = OFF
 set osd_stat_tim_2 = ON
 set task_statistics = ON
 set debug_mode = NONE
+set pwr_on_arm_grace = 0
+set vtx_halfduplex = ON
 set displayport_msp_col_adjust = 0
 set displayport_msp_row_adjust = 0
 set esc_sensor_halfduplex = OFF
@@ -506,6 +513,7 @@ set dashboard_i2c_addr = 60
 set camera_control_mode = HARDWARE_PWM
 set camera_control_ref_voltage = 330
 set camera_control_key_delay = 150
+set camera_control_internal_resistance = 470
 profile 1
 
 set dterm_lowpass_type = BIQUAD
@@ -527,11 +535,13 @@ set crash_time = 500
 set crash_delay = 0
 set crash_recovery_angle = 10
 set crash_recovery_rate = 100
+set crash_limit_yaw = 200
 set crash_recovery = OFF
 set iterm_windup = 50
-set yaw_lowpass = 0
+set iterm_limit = 150
 set pidsum_limit = 500
 set pidsum_limit_yaw = 400
+set yaw_lowpass = 0
 set p_pitch = 58
 set i_pitch = 50
 set d_pitch = 35
@@ -550,7 +560,6 @@ set d_level = 75
 set p_vel = 55
 set i_vel = 55
 set d_vel = 75
-set level_sensitivity = 55
 set level_limit = 55
 set horizon_tilt_effect = 75
 set horizon_tilt_expert_mode = OFF
